@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons end>
+      <button (click)="toggleReorder()" ion-button *ngIf="!reorderIsEnabled">Reorder</button>
+      <button (click)="toggleReorder()" ion-button *ngIf="reorderIsEnabled">Done</button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list [reorder]="reorderIsEnabled" (ionItemReorder) = "itemReordered($event)">
+    <ion-item-sliding *ngFor="let category of categories; let categoryIndex = index">
+      <ion-item>
+        {{category.name}}
+        <span item-end>{{category.amount}} €</span>
+      </ion-item>
+
+
+
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteCategory(categoryIndex)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="left">
+        <button ion-button color="default" (click)="editCategory(categoryIndex)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-item>
+    Total
+    <span item-end> {{ totalAmount }} €</span>
+  </ion-item>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="createCategory()">
+      <ion-icon name="heart"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
