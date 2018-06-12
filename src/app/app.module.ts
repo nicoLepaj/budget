@@ -11,8 +11,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+// providers
 import { CategoryProvider } from '../providers/category/category';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+
+// pipes
+import { RoundNumber } from '../pipes/round-number';
 
 
 
@@ -25,7 +30,8 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
     ContactPage,
     HomePage,
     TabsPage,
-    ProgressBarComponent
+    ProgressBarComponent,
+    RoundNumber
   ],
   imports: [
     BrowserModule,

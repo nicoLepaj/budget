@@ -12,7 +12,8 @@ progress-bar {
 }
 
 .progress-inner {
-  min-width: 15%;
+  max-width: 100%;
+  min-width: 11%;
   white-space: nowrap;
   overflow: hidden;
   padding: 5px;
