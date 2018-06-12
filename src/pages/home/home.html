@@ -9,10 +9,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
   <ion-list [reorder]="reorderIsEnabled" (ionItemReorder) = "itemReordered($event)">
-    <ion-item-sliding *ngFor="let category of categories; let categoryIndex = index">
+    <ion-item-sliding *ngFor="let category of categoryProvider.categories; let categoryIndex = index">
       <ion-item>
         {{category.name}}
         <span item-end>{{category.amount}} €</span>
@@ -37,12 +37,12 @@
 
   <ion-item>
     Total
-    <span item-end> {{ totalAmount }} €</span>
+    <span item-end> {{ categoryProvider.totalAmount }} €</span>
   </ion-item>
 
   <ion-fab right bottom>
     <button ion-fab (click)="createCategory()">
-      <ion-icon name="heart"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
 

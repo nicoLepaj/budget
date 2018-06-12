@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Expenses
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let category of categoryProvider.categories">
+      {{category.name}}
+    </ion-item>
+  </ion-list>
+
+</ion-content>
