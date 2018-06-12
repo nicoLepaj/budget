@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, reorderArray } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { CategoryProvider } from '../../providers/category/category';
 
 @Component({
@@ -23,12 +23,12 @@ export class HomePage {
     this.categoryProvider.createCategory();
   }
 
-  editCategory(categoryIndex) {
-    this.categoryProvider.editCategory(categoryIndex);
+  editCategory(category) {
+    this.categoryProvider.editCategory(category);
   }
 
-  deleteCategory(categoryIndex) {
-    this.categoryProvider.deleteCategory(categoryIndex);
+  deleteCategory(category, index) {
+    this.categoryProvider.deleteCategory(category, index);
   }
 
   toggleReorder() {

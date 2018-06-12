@@ -12,13 +12,13 @@
     <ion-item *ngFor="let category of categoryProvider.categories">
       <button ion-button item-start (click)="addSpent(category)">Add</button>
       {{category.name}}
-      <span item-end>{{category.spent}}</span>
+      <span item-end>{{category.spent}} €</span>
     </ion-item>
   </ion-list>
 
   <ion-item>
     Total Spent
-    <span item-end> Total spent amount €</span>
+    <span item-end>{{totalSpentAmount}} €</span>
   </ion-item>
 
 </ion-content>

@@ -12,22 +12,22 @@
 <ion-content>
 
   <ion-list [reorder]="reorderIsEnabled" (ionItemReorder) = "itemReordered($event)">
-    <ion-item-sliding *ngFor="let category of categoryProvider.categories; let categoryIndex = index">
+    <ion-item-sliding *ngFor="let category of categoryProvider.categories; let i = index">
       <ion-item>
         {{category.name}}
         <span item-end>{{category.amount}} €</span>
+        <span><progress-bar [progress]="category.progress"></progress-bar></span>
       </ion-item>
 
 
-
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="deleteCategory(categoryIndex)">
+        <button ion-button color="danger" (click)="deleteCategory(category, i)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>
 
       <ion-item-options side="left">
-        <button ion-button color="default" (click)="editCategory(categoryIndex)">
+        <button ion-button color="default" (click)="editCategory(category)">
           <ion-icon name="create"></ion-icon>
         </button>
       </ion-item-options>
@@ -37,8 +37,10 @@
 
   <ion-item>
     Total Budget
-    <span item-end> {{ categoryProvider.totalAmount }} €</span>
+    <span item-end>{{categoryProvider.totalAmount}} €</span>
   </ion-item>
+
+
 
   <ion-fab right bottom>
     <button ion-fab (click)="createCategory()">

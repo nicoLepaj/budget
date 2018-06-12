@@ -8,6 +8,7 @@ export class CategoryProvider {
   categories: any = [];
   totalAmount: number = 0;
 
+
   constructor(
     public http: HttpClient,
     public alertController: AlertController,
@@ -17,13 +18,17 @@ export class CategoryProvider {
 
   load() {
     this.categories = [
-      { name: "Rent", amount: 5 },
-      { name: "Groceries", amount: 5 },
-      { name: "Bills", amount: 5 },
-      { name: "Car", amount: 5 },
-      { name: "Social", amount: 5 },
+      { name: "Rent", amount: 5, spent: 0 },
+      { name: "Groceries", amount: 5, spent: 0 },
+      { name: "Bills", amount: 5, spent: 0 },
+      { name: "Car", amount: 5, spent: 0 },
+      { name: "Social", amount: 5, spent: 0 }
     ];
     this.sumAmount();
+    this.categories.forEach((category) => {
+    this.showProgress(category);
+    })
+
   }
 
 
@@ -60,7 +65,8 @@ export class CategoryProvider {
 
             let category = {
               name: inputData.addCategoryName,
-              amount: Number(inputData.addCategoryAmount)
+              amount: Number(inputData.addCategoryAmount),
+              spent: 0
             };
 
             this.categories.push(category);
@@ -70,7 +76,8 @@ export class CategoryProvider {
             createCategoryAlert.onDidDismiss(() => {
               let createCategoryToast = this.toastController.create({
                 message: "Category Created",
-                duration: 2000
+                duration: 2000,
+                position: "middle"
               });
               createCategoryToast.present();
             });
@@ -82,7 +89,7 @@ export class CategoryProvider {
 
   }
 
-  deleteCategory(categoryIndex) {
+  deleteCategory(category, index) {
     let deleteCategoryAlert = this.alertController.create({
       title: "Are you sure ?",
       message: "Delete category",
@@ -93,7 +100,8 @@ export class CategoryProvider {
         {
           text: "Delete",
           handler: () => {
-            this.categories.splice(categoryIndex, 1);
+            console.log(index);
+            this.categories.splice(index, 1);
             this.sumAmount();
           }
         }
@@ -104,7 +112,7 @@ export class CategoryProvider {
   }
 
 
-  editCategory(categoryIndex) {
+  editCategory(category) {
     let editCategoryAlert = this.alertController.create({
       title: "Edit Category",
       message: "Change Category Name",
@@ -112,12 +120,12 @@ export class CategoryProvider {
         {
           type: "text",
           name: "editCategoryName",
-          value: this.categories[categoryIndex].name
+          value: category.name
         },
         {
           type: "number",
           name: "editCategoryAmount",
-          value: this.categories[categoryIndex].amount
+          value: category.amount
         }
       ],
       buttons: [
@@ -127,16 +135,17 @@ export class CategoryProvider {
         {
           text: "Edit Category",
           handler: (inputData) => {
-            this.categories[categoryIndex].name = inputData.editCategoryName;
+            category.name = inputData.editCategoryName;
 
-            this.categories[categoryIndex].amount = Number(inputData.editCategoryAmount);
+            category.amount = Number(inputData.editCategoryAmount);
 
             this.sumAmount();
 
             editCategoryAlert.onDidDismiss(() => {
               let editCategoryToast = this.toastController.create({
                 message: "Category Edited",
-                duration: 2000
+                duration: 2000,
+                position: "middle"
               });
               editCategoryToast.present();
             });
@@ -152,8 +161,13 @@ export class CategoryProvider {
     reorderArray(this.categories, $event)
   }
 
-  addSpent(category) {
-    category.spent = 5;
+
+
+
+
+
+  showProgress(category) {
+    category.progress = (category.spent / category.amount) * 100;
   }
 
 }

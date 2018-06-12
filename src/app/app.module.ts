@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CategoryProvider } from '../providers/category/category';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 
 
@@ -23,7 +24,8 @@ import { CategoryProvider } from '../providers/category/category';
     ExpensesPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
