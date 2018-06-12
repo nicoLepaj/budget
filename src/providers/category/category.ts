@@ -152,4 +152,8 @@ export class CategoryProvider {
     reorderArray(this.categories, $event)
   }
 
+  addSpent(category) {
+    category.spent = 5;
+  }
+
 }

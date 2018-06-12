@@ -14,4 +14,8 @@ export class ExpensesPage {
   ) {
   }
 
+  addSpent(category) {
+    this.categoryProvider.addSpent(category);
+  }
+
 }
