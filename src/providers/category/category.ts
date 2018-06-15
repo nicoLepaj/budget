@@ -14,11 +14,11 @@ export class CategoryProvider {
 
   load() {
     this.categories = [
-      { name: "Rent", amount: 5, spent: 0 },
-      { name: "Groceries", amount: 5, spent: 0 },
-      { name: "Bills", amount: 5, spent: 0 },
-      { name: "Car", amount: 5, spent: 0 },
-      { name: "Social", amount: 5, spent: 0 }
+      { name: "RentBLABLABLABLABLABLABLA", amount: 100, spent: 0 },
+      { name: "Groceries", amount: 100, spent: 30 },
+      { name: "Bills", amount: 100, spent: 60 },
+      { name: "Car", amount: 100, spent: 80 },
+      { name: "Social", amount: 100, spent: 101 }
     ];
     this.sumAmount();
     this.categories.forEach((category) => {

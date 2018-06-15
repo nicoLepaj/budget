@@ -13,10 +13,10 @@
 
   <ion-list [reorder]="reorderIsEnabled" (ionItemReorder) = "itemReordered($event)">
     <ion-item-sliding *ngFor="let category of categoryProvider.categories; let i = index">
-      <ion-item>
-        {{category.name}}
-        <span item-end>{{category.amount}} €</span>
+      <ion-item class="home-item">
+        <div text-nowrap>{{category.name}}</div>
         <progress-bar [progress]="category.progress"></progress-bar>
+        <div class="category-amount">{{category.amount}} €</div>
       </ion-item>
 
 

@@ -1,3 +1,14 @@
 page-home {
 
+  .home-item ion-label {
+    margin-bottom: 2px !important;
+  }
+
+  .category-amount {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 23px 6px 0 !important;
+  }
+
 }
