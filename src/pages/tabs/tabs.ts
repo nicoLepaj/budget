@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ExpensesPage } from '../expenses/expenses';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
+import { CategoryProvider } from '../../providers/category/category';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -13,7 +14,13 @@ export class TabsPage {
   tab2Root = ExpensesPage;
   tab3Root = ContactPage;
 
-  constructor() {
 
+  constructor(
+    public categoryProvider: CategoryProvider
+  ) {
+  }
+
+  createCategory() {
+    this.categoryProvider.createCategory();
   }
 }

@@ -22,7 +22,7 @@ export class ExpensesPage {
 
   addSpent(category) {
     let addSpentAlert = this.alertController.create({
-      title: "Add spending",
+      title: "Add to " + category.name,
       inputs: [
         {
           type: "number",
@@ -41,13 +41,13 @@ export class ExpensesPage {
 
             this.sumSpentAmount();
             this.categoryProvider.showProgress(category);
-            this.navCtrl.parent.select(0);
+          //  this.navCtrl.parent.select(0);
 
             addSpentAlert.onDidDismiss(() => {
               let addSpentToast = this.toastController.create({
                 message: inputData.addSpentAmount + " € added to " + category.name,
                 duration: 2000,
-                position: "middle"
+                position: "top"
               });
               addSpentToast.present();
             });

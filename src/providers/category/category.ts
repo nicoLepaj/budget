@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { reorderArray } from 'ionic-angular';
+import { reorderArray, AlertController, ToastController } from 'ionic-angular';
 
 @Injectable()
 export class CategoryProvider {
@@ -8,7 +8,10 @@ export class CategoryProvider {
   totalAmount: number = 0;
 
 
+
   constructor(
+    public alertController: AlertController,
+    public toastController: ToastController
   ) {
   }
 
@@ -18,7 +21,13 @@ export class CategoryProvider {
       { name: "Groceries", amount: 100, spent: 30 },
       { name: "Bills", amount: 100, spent: 60 },
       { name: "Car", amount: 100, spent: 80 },
-      { name: "Social", amount: 100, spent: 101 }
+      { name: "Social", amount: 100, spent: 101, },
+      { name: "cat1", amount: 100, spent: 80 },
+      { name: "cat2", amount: 100, spent: 80 },
+      { name: "cat3", amount: 100, spent: 80 },
+      { name: "cat4", amount: 100, spent: 80 },
+      { name: "cat5", amount: 100, spent: 80 },
+      { name: "cat6", amount: 100, spent: 80 },
     ];
     this.sumAmount();
     this.categories.forEach((category) => {
@@ -45,6 +54,54 @@ export class CategoryProvider {
 
   itemReordered($event) {
     reorderArray(this.categories, $event)
+  }
+
+  createCategory() {
+    let createCategoryAlert = this.alertController.create({
+      title: "Create a Category",
+      inputs: [
+        {
+          type: "text",
+          placeholder: "Name",
+          name: "addCategoryName"
+        },
+        {
+          type: "number",
+          placeholder: "Amount",
+          name: "addCategoryAmount"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel"
+        },
+        {
+          text: "Create",
+          handler: (inputData) => {
+
+            let category = {
+              name: inputData.addCategoryName,
+              amount: Number(inputData.addCategoryAmount),
+              spent: 0
+            };
+
+            this.categories.push(category);
+            this.updateCategory(category);
+
+            createCategoryAlert.onDidDismiss(() => {
+              let createCategoryToast = this.toastController.create({
+                message: "Category Created",
+                duration: 2000,
+                position: "top"
+              });
+              createCategoryToast.present();
+            });
+          }
+        }
+      ]
+    });
+    createCategoryAlert.present();
+
   }
 
 }

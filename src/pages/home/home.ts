@@ -16,68 +16,26 @@ export class HomePage {
     public categoryProvider: CategoryProvider
   ) {
 
-    
+
   }
 
   ionViewDidLoad() {
     this.categoryProvider.load();
   }
 
-  createCategory() {
-    let createCategoryAlert = this.alertController.create({
-      title: "Create a Category",
-      inputs: [
-        {
-          type: "text",
-          placeholder: "Name",
-          name: "addCategoryName"
-        },
-        {
-          type: "number",
-          placeholder: "Amount",
-          name: "addCategoryAmount"
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancel"
-        },
-        {
-          text: "Create",
-          handler: (inputData) => {
 
-            let category = {
-              name: inputData.addCategoryName,
-              amount: Number(inputData.addCategoryAmount),
-              spent: 0
-            };
 
-            this.categoryProvider.categories.push(category);
-            this.categoryProvider.updateCategory(category);
-
-            createCategoryAlert.onDidDismiss(() => {
-              let createCategoryToast = this.toastController.create({
-                message: "Category Created",
-                duration: 2000,
-                position: "middle"
-              });
-              createCategoryToast.present();
-            });
-          }
-        }
-      ]
-    });
-    createCategoryAlert.present();
-
-  }
-
-  deleteCategory(category, index) {
+  deleteCategory(category, index, slidingItem) {
     let deleteCategoryAlert = this.alertController.create({
       title: "Are you sure ?",
       message: "Delete category",
       buttons: [
         {
-          text: "Cancel"
+          text: "Cancel",
+          role: "cancel",
+          handler: () => {
+            slidingItem.close();
+          }
         },
         {
           text: "Delete",
@@ -93,7 +51,8 @@ export class HomePage {
   }
 
 
-  editCategory(category) {
+  editCategory(category, slidingItem) {
+
     let editCategoryAlert = this.alertController.create({
       title: "Edit Category",
       message: "Change Category Name",
@@ -111,7 +70,11 @@ export class HomePage {
       ],
       buttons: [
         {
-          text: "cancel"
+          text: "cancel",
+          role: "cancel",
+          handler: () => {
+            slidingItem.close();
+          }
         },
         {
           text: "Edit Category",
@@ -126,9 +89,10 @@ export class HomePage {
               let editCategoryToast = this.toastController.create({
                 message: "Category Edited",
                 duration: 2000,
-                position: "middle"
+                position: "top"
               });
               editCategoryToast.present();
+              slidingItem.close();
             });
           }
         }

@@ -10,9 +10,10 @@
 
   <ion-list>
     <ion-item *ngFor="let category of categoryProvider.categories">
-      <button ion-button item-start (click)="addSpent(category)">Add</button>
+
       {{category.name}}
-      <span item-end>{{category.spent}} €</span>
+      <div item-end>{{category.spent}} €</div>
+      <button ion-button item-end (click)="addSpent(category)">Add</button>
     </ion-item>
   </ion-list>
 
