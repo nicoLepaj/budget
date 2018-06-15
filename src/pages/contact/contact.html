@@ -1,17 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Tab3
+      Income
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Bla bla bla</ion-list-header>
-    <ion-item>
-      <ion-icon name="cube" item-start></ion-icon>
-      Blabla
-    </ion-item>
-  </ion-list>
+
+<ion-list>
+  <ion-item *ngFor="let income of incomeProvider.incomes">
+  </ion-item>
+</ion-list>
+
+
+
 </ion-content>

@@ -5,9 +5,10 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ExpensesPage } from '../pages/expenses/expenses';
-import { ContactPage } from '../pages/contact/contact';
+import { IncomePage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { AnalyticsPage } from '../pages/analytics/analytics';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,6 +19,7 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 // pipes
 import { RoundNumber } from '../pipes/round-number';
+import { IncomeProvider } from '../providers/income/income-provider';
 
 
 
@@ -27,9 +29,10 @@ import { RoundNumber } from '../pipes/round-number';
   declarations: [
     MyApp,
     ExpensesPage,
-    ContactPage,
+    IncomePage,
     HomePage,
     TabsPage,
+    AnalyticsPage,
     ProgressBarComponent,
     RoundNumber
   ],
@@ -42,15 +45,17 @@ import { RoundNumber } from '../pipes/round-number';
   entryComponents: [
     MyApp,
     ExpensesPage,
-    ContactPage,
+    IncomePage,
     HomePage,
+    AnalyticsPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CategoryProvider
+    CategoryProvider,
+    IncomeProvider
   ]
 })
 export class AppModule {}

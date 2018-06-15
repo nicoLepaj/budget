@@ -1,14 +1,14 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Tab1" tabIcon="planet"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Tab2" tabIcon="heart"></ion-tab>
+<ion-tabs #myTabs selectedIndex="3" (ionChange)="getTabIndex()">
+  <ion-tab [root]="tab1Root" tabTitle="Dashboard" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Expenses" tabIcon="pricetags"></ion-tab>
   <ion-tab></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Tab3" tabIcon="sunny"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Tab4" tabIcon="water"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Income" tabIcon="cash"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Analytics" tabIcon="stats"></ion-tab>
 </ion-tabs>
 
 
-<ion-fab center bottom>
-    <button ion-fab (click)="createCategory()">
+<ion-fab center bottom >
+    <button ion-fab (click)="create()" [disabled]="tabIndex === 1 || tabIndex === 4">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
