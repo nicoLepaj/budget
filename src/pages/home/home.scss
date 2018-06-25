@@ -1,5 +1,57 @@
 page-home {
 
+ion-content {
+background-image: linear-gradient(to right top, #051937, #39235a, #7a1e6a, #ba0061, #eb1241);
+}
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1;
+    border-top-left-radius: 20px;
+  }
+
+  $triangle-width: 100px;
+  $triangle-height: 140px;
+
+
+  .triangle-down {
+    border-width: $triangle-height $triangle-width 0 $triangle-width;
+    border-color: #47a0ff transparent transparent transparent;
+  }
+
+  .triangle-up {
+    border-width: 0px $triangle-width $triangle-height $triangle-width;
+    border-color: transparent transparent #47a0ff transparent;
+  }
+
+  .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+  @keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
   .home-item ion-label {
     margin-bottom: 2px !important;
   }
@@ -15,8 +67,13 @@ page-home {
     margin-bottom: 15px;
   }
 
-  #budget-amount {
-    margin-right: 14px;
+  .total-budget {
+    text-align: center;
+    font-size: 200%;
+  }
+
+  #total-budget-text {
+    margin-top: 3%;
   }
 
   ion-item {
@@ -26,8 +83,8 @@ page-home {
   ion-item {
     background-color: "";
   }
+
   .scroll-content {
     background-color: "";
   }
-
 }

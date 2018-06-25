@@ -1,24 +1,32 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>DASHBOARD</ion-title>
     <ion-buttons end>
       <button (click)="toggleReorder()" ion-button *ngIf="!reorderIsEnabled">Reorder</button>
       <button (click)="toggleReorder()" ion-button *ngIf="reorderIsEnabled">Done</button>
-
     </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
+  <div class="slideInUp animated infinite">
+    ziefubnql
+  </div>
+  <div class="total-budget" id="total-budget-text">Total Budget</div>
+  <div class="total-budget">{{categoryProvider.totalAmount}}</div>
 
-  <ion-list [reorder]="reorderIsEnabled" (ionItemReorder) = "itemReordered($event)">
+  <div class="triangle triangle-down">
+
+  </div>
+  <div class="triangle triangle-up"></div>
+
+  <ion-list [reorder]="reorderIsEnabled" (ionItemReorder)="itemReordered($event)">
     <ion-item-sliding #slidingItem no-lines *ngFor="let category of categoryProvider.categories; let i = index">
       <ion-item no-lines class="home-item">
         <div text-nowrap>{{category.name}}</div>
         <progress-bar [progress]="category.progress"></progress-bar>
         <div class="category-amount">{{category.amount}} €</div>
       </ion-item>
-
 
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deleteCategory(category, i, slidingItem)">
@@ -39,13 +47,27 @@
     <div item-start>
       Total Budget
     </div>
-    <div id="budget-amount" item-end>
+    <div item-end>
       {{categoryProvider.totalAmount}} €
     </div>
   </ion-item>
 
+  <ion-item no-lines>
+    <div item-start>
+      Amount Spent
+    </div>
+    <div item-end>
+      {{categoryProvider.totalSpentAmount}} €
+    </div>
+  </ion-item>
 
-
-
+  <ion-item no-lines>
+    <div item-start>
+      Savings
+    </div>
+    <div item-end>
+      {{categoryProvider.savings}} €
+    </div>
+  </ion-item>
 
 </ion-content>

@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ExpensesPage } from '../pages/expenses/expenses';
-import { IncomePage } from '../pages/contact/contact';
+import { IncomePage } from '../pages/income/income';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AnalyticsPage } from '../pages/analytics/analytics';

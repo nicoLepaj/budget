@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { ExpensesPage } from '../expenses/expenses';
-import { IncomePage } from '../contact/contact';
+import { IncomePage } from '../income/income';
 import { HomePage } from '../home/home';
 import { AnalyticsPage } from '../analytics/analytics';
 
@@ -26,6 +26,7 @@ export class TabsPage {
     public incomeProvider: IncomeProvider
 
   ) {
+    this.categoryProvider.load();
   }
 
   getTabIndex() {

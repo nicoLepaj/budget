@@ -6,8 +6,8 @@ export class CategoryProvider {
 
   categories: any = [];
   totalAmount: number = 0;
-
-
+  totalSpentAmount: number = 0;
+  savings: number = 0;
 
   constructor(
     public alertController: AlertController,
@@ -17,22 +17,18 @@ export class CategoryProvider {
 
   load() {
     this.categories = [
-      { name: "RentBLABLABLABLABLABLABLA", amount: 100, spent: 0 },
-      { name: "Groceries", amount: 100, spent: 30 },
-      { name: "Bills", amount: 100, spent: 60 },
-      { name: "Car", amount: 100, spent: 80 },
-      { name: "Social", amount: 100, spent: 101, },
-      { name: "cat1", amount: 100, spent: 80 },
-      { name: "cat2", amount: 100, spent: 80 },
-      { name: "cat3", amount: 100, spent: 80 },
-      { name: "cat4", amount: 100, spent: 80 },
-      { name: "cat5", amount: 100, spent: 80 },
-      { name: "cat6", amount: 100, spent: 80 },
+      { name: "Rent", amount: 100, spent: 0 },
+      { name: "Groceries", amount: 100, spent: 15 },
+      { name: "Bills", amount: 100, spent: 30 },
+      { name: "Car", amount: 100, spent: 50 },
+      { name: "Social", amount: 100, spent: 80, },
     ];
     this.sumAmount();
+    this.sumSpentAmount();
+    this.sumSavings();
     this.categories.forEach((category) => {
       this.showProgress(category);
-    })
+    });
 
   }
 
@@ -52,8 +48,8 @@ export class CategoryProvider {
     category.progress = (category.spent / category.amount) * 100;
   }
 
-  itemReordered($event) {
-    reorderArray(this.categories, $event)
+  itemReordered(event) {
+  this.categories = reorderArray(this.categories, event)
   }
 
   createCategory() {
@@ -103,5 +99,18 @@ export class CategoryProvider {
     createCategoryAlert.present();
 
   }
+
+  sumSpentAmount() {
+    this.totalSpentAmount = 0;
+    this.categories.forEach((category) => {
+      this.totalSpentAmount = this.totalSpentAmount + category.spent;
+    })
+  }
+
+  sumSavings(){
+    this.savings = 0;
+    this.savings = this.totalAmount - this.totalSpentAmount;
+  }
+
 
 }

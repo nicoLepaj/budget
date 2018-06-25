@@ -7,12 +7,37 @@ import { reorderArray, AlertController, ToastController } from 'ionic-angular';
 export class IncomeProvider {
 
   incomes: any = [];
-
+  totalAmount: number = 0;
   constructor(
     public http: HttpClient,
     public alertController: AlertController,
     public toastController: ToastController
   ) {
+  }
+
+  load(){
+    this.incomes = [
+      {name: "Salary", amount: 2000},
+      {name: "Rentals", amount: 1000},
+      {name: "Ebay", amount: 400},
+    ];
+
+    this.sumAmount();
+  }
+
+  sumAmount() {
+    this.totalAmount = 0;
+    this.incomes.forEach((income) => {
+      this.totalAmount = this.totalAmount + income.amount;
+    })
+  }
+
+  updateIncome(income){
+    this.sumAmount();
+  }
+
+  itemReordered(event) {
+    this.incomes = reorderArray(this.incomes, event)
   }
 
   createIncome() {
@@ -44,7 +69,7 @@ export class IncomeProvider {
             };
 
             this.incomes.push(income);
-
+            this.updateIncome(income);
 
             createIncomeAlert.onDidDismiss(() => {
               let createIncomeToast = this.toastController.create({

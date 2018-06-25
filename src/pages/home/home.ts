@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { AlertController, NavController, ToastController } from 'ionic-angular';
 import { CategoryProvider } from '../../providers/category/category';
 
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   reorderIsEnabled = false;
 
   constructor(
@@ -18,12 +21,6 @@ export class HomePage {
 
 
   }
-
-  ionViewDidLoad() {
-    this.categoryProvider.load();
-  }
-
-
 
   deleteCategory(category, index, slidingItem) {
     let deleteCategoryAlert = this.alertController.create({
@@ -106,8 +103,8 @@ export class HomePage {
     this.reorderIsEnabled = !this.reorderIsEnabled;
   }
 
-  itemReordered($event) {
-    this.categoryProvider.itemReordered($event)
+  itemReordered(event) {
+    this.categoryProvider.itemReordered(event)
   }
 
 

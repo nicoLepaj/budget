@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Income
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="toggleReorder()" ion-button *ngIf="!reorderIsEnabled">Reorder</button>
+      <button (click)="toggleReorder()" ion-button *ngIf="reorderIsEnabled">Done</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<ion-list [reorder]="reorderIsEnabled" (ionItemReorder)="itemReordered($event)">
+  <ion-item-sliding #slidingItem no-lines *ngFor="let income of incomeProvider.incomes; let i = index">
+  <ion-item no-lines>
+    <div text-nowrap>{{income.name}}</div>
+    <div item-end>{{income.amount}} €</div>
+  </ion-item>
+
+  <ion-item-options side="right">
+    <button ion-button color="danger" (click)="deleteIncome(income, i, slidingItem)">
+      <ion-icon name="trash"></ion-icon>
+    </button>
+  </ion-item-options>
+
+  <ion-item-options side="left">
+    <button ion-button color="default" (click)="editIncome(income, slidingItem)">
+      <ion-icon name="create"></ion-icon>
+    </button>
+  </ion-item-options>
+
+</ion-item-sliding>
+</ion-list>
+
+<ion-item no-lines>
+  <div item-start>
+    Total Income
+  </div>
+  <div item-end>
+    {{incomeProvider.totalAmount}} €
+  </div>
+</ion-item>
+
+</ion-content>

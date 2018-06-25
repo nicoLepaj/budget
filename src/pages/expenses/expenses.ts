@@ -8,9 +8,6 @@ import { CategoryProvider } from '../../providers/category/category';
 })
 export class ExpensesPage {
 
-  totalSpentAmount: number = 0;
-
-
   constructor(
     public navCtrl: NavController,
     public categoryProvider: CategoryProvider,
@@ -18,7 +15,6 @@ export class ExpensesPage {
     public toastController: ToastController
   ) {
   }
-
 
   addSpent(category) {
     let addSpentAlert = this.alertController.create({
@@ -39,7 +35,7 @@ export class ExpensesPage {
           handler: (inputData) => {
             category.spent = category.spent + Number(inputData.addSpentAmount);
 
-            this.sumSpentAmount();
+            this.categoryProvider.sumSpentAmount();
             this.categoryProvider.showProgress(category);
           //  this.navCtrl.parent.select(0);
 
@@ -59,10 +55,5 @@ export class ExpensesPage {
 
   }
 
-  sumSpentAmount() {
-    this.totalSpentAmount = 0;
-    this.categoryProvider.categories.forEach((category) => {
-      this.totalSpentAmount = this.totalSpentAmount + category.spent;
-    })
-  }
+
 }
