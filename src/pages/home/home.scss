@@ -1,56 +1,40 @@
 page-home {
-
-ion-content {
-background-image: linear-gradient(to right top, #051937, #39235a, #7a1e6a, #ba0061, #eb1241);
-}
-
-  .triangle {
-    width: 0;
-    height: 0;
-    border-style: solid;
+  .circle {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    border: 3px solid black;
+    color: white;
     margin-left: auto;
     margin-right: auto;
-    opacity: 1;
-    border-top-left-radius: 20px;
+    background: #ff8c00;
+  }
+  .transition {
+    width: 100%;
+    height: 15%;
+    z-index: 2;
+    background-image: linear-gradient(to top, #ff8c00, #eeaa00, #cec900, #9be500, #1dff00);
+  }
+  .amount {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
   }
 
-  $triangle-width: 100px;
-  $triangle-height: 140px;
-
-
-  .triangle-down {
-    border-width: $triangle-height $triangle-width 0 $triangle-width;
-    border-color: #47a0ff transparent transparent transparent;
+  .fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #1dff00;
+    transition:height 2000ms;
   }
-
-  .triangle-up {
-    border-width: 0px $triangle-width $triangle-height $triangle-width;
-    border-color: transparent transparent #47a0ff transparent;
-  }
-
-  .animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
-.animated.infinite {
-  animation-iteration-count: infinite;
-}
-
-  @keyframes slideInUp {
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.slideInUp {
-  animation-name: slideInUp;
-}
 
   .home-item ion-label {
     margin-bottom: 2px !important;
@@ -67,21 +51,11 @@ background-image: linear-gradient(to right top, #051937, #39235a, #7a1e6a, #ba00
     margin-bottom: 15px;
   }
 
-  .total-budget {
-    text-align: center;
-    font-size: 200%;
-  }
-
-  #total-budget-text {
-    margin-top: 3%;
-  }
-
-  ion-item {
-    border: none !important;
-  }
+  ion-item {}
 
   ion-item {
     background-color: "";
+    border: none !important;
   }
 
   .scroll-content {

@@ -9,6 +9,9 @@ import { IncomePage } from '../pages/income/income';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AnalyticsPage } from '../pages/analytics/analytics';
+import { CategoriesPage } from '../pages/categories/categories';
+import { DetailsPage } from '../pages/details/details';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +36,8 @@ import { IncomeProvider } from '../providers/income/income-provider';
     HomePage,
     TabsPage,
     AnalyticsPage,
+    CategoriesPage,
+    DetailsPage,
     ProgressBarComponent,
     RoundNumber
   ],
@@ -48,6 +53,8 @@ import { IncomeProvider } from '../providers/income/income-provider';
     IncomePage,
     HomePage,
     AnalyticsPage,
+    CategoriesPage,
+    DetailsPage,
     TabsPage
   ],
   providers: [

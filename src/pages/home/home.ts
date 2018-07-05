@@ -17,9 +17,17 @@ export class HomePage {
     public alertController: AlertController,
     public toastController: ToastController,
     public categoryProvider: CategoryProvider
-  ) {
+  )
+  {
 
+  }
 
+  ionViewDidEnter() {
+    this.categoryProvider.circleFill();
+  }
+
+  addFill() {
+    this.categoryProvider.budget.fill = this.categoryProvider.budget.fill + 20;
   }
 
   deleteCategory(category, index, slidingItem) {
@@ -102,6 +110,7 @@ export class HomePage {
   toggleReorder() {
     this.reorderIsEnabled = !this.reorderIsEnabled;
   }
+
 
   itemReordered(event) {
     this.categoryProvider.itemReordered(event)

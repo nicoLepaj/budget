@@ -8,6 +8,7 @@ export class CategoryProvider {
   totalAmount: number = 0;
   totalSpentAmount: number = 0;
   savings: number = 0;
+  budget: any = [];
 
   constructor(
     public alertController: AlertController,
@@ -17,15 +18,16 @@ export class CategoryProvider {
 
   load() {
     this.categories = [
-      { name: "Rent", amount: 100, spent: 0 },
-      { name: "Groceries", amount: 100, spent: 15 },
-      { name: "Bills", amount: 100, spent: 30 },
-      { name: "Car", amount: 100, spent: 50 },
-      { name: "Social", amount: 100, spent: 80, },
+      { name: "Rent", amount: 100, spent: 1 },
+      { name: "Groceries", amount: 100, spent: 2 },
+      { name: "Bills", amount: 100, spent: 3 },
+      { name: "Car", amount: 100, spent: 4 },
+      { name: "Social", amount: 100, spent: 5 },
     ];
     this.sumAmount();
     this.sumSpentAmount();
     this.sumSavings();
+    this.circleFill();
     this.categories.forEach((category) => {
       this.showProgress(category);
     });
@@ -46,6 +48,15 @@ export class CategoryProvider {
 
   showProgress(category) {
     category.progress = (category.spent / category.amount) * 100;
+  }
+
+  circleFill() {
+    if (this.totalSpentAmount === 0) {
+        this.budget.fill = 100;
+    }
+    else {
+      this.budget.fill = 100 - ((this.totalSpentAmount / this.totalAmount) * 100);
+    }
   }
 
   itemReordered(event) {

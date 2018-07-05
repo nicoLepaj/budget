@@ -9,18 +9,17 @@
 </ion-header> -->
 
 <ion-content>
-  <div class="slideInUp animated infinite">
-    ziefubnql
+
+  <div>Total Budget</div>
+
+  <div class="circle">
+    <div class="amount">{{categoryProvider.totalAmount}}</div>
+    <div class="fill" [style.height]="categoryProvider.budget.fill + '%'"></div>
   </div>
-  <div class="total-budget" id="total-budget-text">Total Budget</div>
-  <div class="total-budget">{{categoryProvider.totalAmount}}</div>
 
-  <div class="triangle triangle-down">
+  <button ion-button (click)="addFill()">Add Fill</button>
 
-  </div>
-  <div class="triangle triangle-up"></div>
-
-  <ion-list [reorder]="reorderIsEnabled" (ionItemReorder)="itemReordered($event)">
+  <!-- <ion-list [reorder]="reorderIsEnabled" (ionItemReorder)="itemReordered($event)">
     <ion-item-sliding #slidingItem no-lines *ngFor="let category of categoryProvider.categories; let i = index">
       <ion-item no-lines class="home-item">
         <div text-nowrap>{{category.name}}</div>
@@ -68,6 +67,6 @@
     <div item-end>
       {{categoryProvider.savings}} €
     </div>
-  </ion-item>
+  </ion-item> -->
 
 </ion-content>

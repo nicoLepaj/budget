@@ -1,9 +1,10 @@
-<ion-tabs #myTabs selectedIndex="0" (ionChange)="getTabIndex()">
+<ion-tabs #myTabs selectedIndex="5" (ionChange)="getTabIndex()">
   <ion-tab [root]="tab1Root" tabTitle="Dashboard" tabIcon="planet"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Expenses" tabIcon="pricetags"></ion-tab>
   <ion-tab></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Income" tabIcon="cash"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Analytics" tabIcon="stats"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Categories" tabIcon="heart"></ion-tab>
 </ion-tabs>
 
 <ion-fab center bottom>

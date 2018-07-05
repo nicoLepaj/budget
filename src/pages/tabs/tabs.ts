@@ -4,7 +4,7 @@ import { ExpensesPage } from '../expenses/expenses';
 import { IncomePage } from '../income/income';
 import { HomePage } from '../home/home';
 import { AnalyticsPage } from '../analytics/analytics';
-
+import { CategoriesPage } from '../categories/categories';
 import { IncomeProvider } from '../../providers/income/income-provider';
 import { CategoryProvider } from '../../providers/category/category';
 
@@ -18,12 +18,13 @@ export class TabsPage {
   tab2Root = ExpensesPage;
   tab3Root = IncomePage;
   tab4Root = AnalyticsPage;
+  tab5Root = CategoriesPage;
 
   tabIndex: number = 0;
 
   constructor(
     public categoryProvider: CategoryProvider,
-    public incomeProvider: IncomeProvider
+    public incomeProvider: IncomeProvider,
 
   ) {
     this.categoryProvider.load();
@@ -33,13 +34,4 @@ export class TabsPage {
     this.tabIndex = this.tabRef.getSelected().index;
   }
 
-  create() {
-    if (this.tabRef.getSelected().index === 0) {
-      this.categoryProvider.createCategory();
-    }
-    else if (this.tabRef.getSelected().index === 3) {
-        this.incomeProvider.createIncome();
-    }
-
-  }
 }

@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>categories</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="square-container">
+    <div class="square" *ngFor="let category of categoryProvider.categories; let i=index">
+      <div class="content" (click)="openDetails(category)">{{category.name}}</div>
+    </div>
+  </div>
+
+  <div class="square">
+    <div class="last">
+      Add
+    </div>
+  </div>
+
+</ion-content>
